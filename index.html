@@ -13,8 +13,8 @@
             --gold-darker: #9e6d0f;
             --gold-gradient: linear-gradient(135deg, #ffe28a 0%, #d4af37 50%, #996515 100%);
             --gold-glow: linear-gradient(135deg, #ffffff 0%, #f3e5ab 30%, #d4af37 70%, #aa7c11 100%);
-            --dark-bg: #0d0d0d;
-            --card-bg: rgba(20, 20, 20, 0.85);
+            --dark-bg: #0a0a0a;
+            --card-bg: rgba(22, 22, 22, 0.95);
             --border-gold: linear-gradient(45deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
         }
 
@@ -23,13 +23,14 @@
             margin: 0;
             padding: 0;
             font-family: 'Cairo', sans-serif;
+            user-select: none; /* منع تحديد النصوص */
         }
 
         body {
             background-color: var(--dark-bg);
             background-image: 
-                radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.25) 0%, transparent 60%),
-                radial-gradient(circle at 50% 100%, rgba(0, 0, 0, 0.9) 0%, transparent 80%);
+                radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.22) 0%, transparent 60%),
+                radial-gradient(circle at 50% 100%, rgba(0, 0, 0, 0.95) 0%, transparent 80%);
             color: #ffffff;
             display: flex;
             justify-content: center;
@@ -38,103 +39,95 @@
             padding: 20px;
         }
 
-        /* حاوية الصفحة بتأثير الإطار الذهبي */
         .container-wrapper {
             position: relative;
-            padding: 3px;
+            padding: 2px;
             border-radius: 24px;
             background: var(--border-gold);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 25px rgba(212, 175, 55, 0.2);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(212, 175, 55, 0.25);
             width: 100%;
             max-width: 520px;
         }
 
         .container {
             background: var(--card-bg);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
             width: 100%;
-            padding: 35px 30px;
+            padding: 35px 28px;
             border-radius: 22px;
             position: relative;
             overflow: hidden;
         }
 
-        /* رأس الصفحة والأيقونة */
         .header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
         .gold-icon {
-            font-size: 42px;
+            font-size: 45px;
             margin-bottom: 5px;
-            filter: drop-shadow(0 0 10px rgba(245, 208, 97, 0.6));
+            filter: drop-shadow(0 0 12px rgba(245, 208, 97, 0.7));
         }
 
         .header h1 {
             background: var(--gold-glow);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-size: 32px;
+            font-size: 30px;
             font-weight: 900;
-            letter-spacing: 1px;
             margin-bottom: 5px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
 
         .header p {
             color: #d1d1d1;
-            font-size: 15px;
+            font-size: 14px;
         }
 
-        /* بطاقات الأسعار الذهبية */
         .price-badge-container {
             display: flex;
-            gap: 12px;
+            gap: 10px;
             justify-content: center;
-            margin-top: 20px;
+            margin-top: 15px;
         }
 
         .price-badge {
             background: var(--gold-gradient);
             color: #0d0d0d;
-            padding: 10px 15px;
+            padding: 8px 12px;
             border-radius: 12px;
             font-weight: 700;
-            font-size: 14px;
+            font-size: 13px;
             flex: 1;
             text-align: center;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.4);
         }
 
         .price-badge span {
             display: block;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 900;
         }
 
-        /* حقول الإدخال */
         .form-group {
-            margin-bottom: 22px;
+            margin-bottom: 18px;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             color: var(--gold-main);
-            font-weight: 600;
-            font-size: 15px;
+            font-weight: 700;
+            font-size: 14px;
         }
 
         .form-group input {
             width: 100%;
-            padding: 14px 16px;
+            padding: 12px 15px;
             border-radius: 10px;
             border: 1px solid #444;
-            background-color: rgba(30, 30, 30, 0.9);
+            background-color: rgba(28, 28, 28, 0.95);
             color: #fff;
-            font-size: 16px;
+            font-size: 15px;
             outline: none;
             transition: all 0.3s ease;
         }
@@ -142,25 +135,16 @@
         .form-group input:focus {
             border-color: var(--gold-main);
             box-shadow: 0 0 12px rgba(245, 208, 97, 0.4);
-            background-color: rgba(40, 40, 40, 0.95);
         }
 
-        /* رفع الملفات الفاخر */
         .file-input-wrapper {
             position: relative;
-            background: linear-gradient(180deg, rgba(35,35,35,1) 0%, rgba(20,20,20,1) 100%);
+            background: linear-gradient(180deg, rgba(30,30,30,1) 0%, rgba(18,18,18,1) 100%);
             border: 2px dashed var(--gold-dark);
-            padding: 20px;
+            padding: 15px;
             border-radius: 12px;
             text-align: center;
             cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .file-input-wrapper:hover {
-            border-color: var(--gold-main);
-            background: rgba(45, 45, 45, 1);
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
         }
 
         .file-input-wrapper input[type="file"] {
@@ -173,42 +157,35 @@
             cursor: pointer;
         }
 
-        .file-input-wrapper span {
-            color: var(--gold-light);
-            font-weight: 600;
-        }
-
-        /* الزر الذهبي الفاخر */
         .btn-submit {
             width: 100%;
-            padding: 16px;
+            padding: 14px;
             background: var(--gold-glow);
             color: #0d0d0d;
             border: none;
             border-radius: 12px;
-            font-size: 18px;
+            font-size: 17px;
             font-weight: 900;
             cursor: pointer;
-            transition: all 0.3s ease;
             box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
-            letter-spacing: 0.5px;
             margin-top: 10px;
         }
 
-        .btn-submit:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(245, 208, 97, 0.6);
-        }
-
-        .btn-submit:active {
-            transform: translateY(1px);
-        }
-
-        /* صفحة الترحيب المحسنة */
-        .welcome-card {
-            display: none;
+        .nav-links {
             text-align: center;
-            animation: fadeIn 0.6s ease-in-out;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .nav-links a {
+            color: var(--gold-main);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .dashboard-card {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
         }
 
         @keyframes fadeIn {
@@ -216,165 +193,264 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .welcome-card h2 {
-            background: var(--gold-glow);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-size: 26px;
-            font-weight: 900;
-            margin-bottom: 12px;
+        .user-status {
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid var(--gold-main);
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--gold-light);
+            font-weight: bold;
         }
 
         .bank-details {
-            background: linear-gradient(145deg, #1f1f1f, #141414);
+            background: linear-gradient(145deg, #1c1c1c, #121212);
             border: 1px solid var(--gold-dark);
             border-radius: 16px;
-            padding: 22px;
-            margin: 25px 0;
+            padding: 20px;
+            margin: 20px 0;
             text-align: right;
-            box-shadow: inset 0 0 15px rgba(0,0,0,0.8), 0 5px 15px rgba(0,0,0,0.5);
         }
 
-        .bank-details p {
-            margin-bottom: 12px;
-            font-size: 16px;
-            color: #e0e0e0;
-        }
-
-        .bank-details strong {
-            color: var(--gold-main);
-        }
-
-        .account-number-box {
+        .account-box {
             background: #000;
             border: 1px solid var(--gold-main);
             padding: 12px;
             border-radius: 10px;
             margin-top: 10px;
-            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
         .account-number {
-            font-size: 26px;
+            font-size: 24px;
             color: var(--gold-light);
             font-weight: 900;
-            letter-spacing: 3px;
-            direction: ltr;
-            display: inline-block;
+            letter-spacing: 2px;
         }
 
-        .alert-info {
-            font-size: 13px;
-            color: #b0b0b0;
-            line-height: 1.6;
-            background: rgba(212, 175, 55, 0.08);
-            padding: 12px;
-            border-radius: 8px;
-            border-right: 3px solid var(--gold-main);
+        .btn-copy {
+            background: var(--gold-gradient);
+            border: none;
+            color: #000;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 12px;
+            cursor: pointer;
         }
     </style>
 </head>
-<body>
+<body oncontextmenu="return false;"> <!-- حظر زر الفأرة الأيمن -->
 
     <div class="container-wrapper">
         <div class="container">
             
-            <!-- ================= 1. نموذج الشراء وإدخال البيانات ================= -->
-            <div id="step-form">
+            <!-- 1. نموذج التسجيل والتوثيق -->
+            <div id="step-register">
                 <div class="header">
                     <div class="gold-icon">👑</div>
                     <h1>حبوب الذهب</h1>
-                    <p>منصة الشراء المباشر بالجرام والحبة</p>
+                    <p>طلب شراء وتوثيق حساب جديد</p>
                     <div class="price-badge-container">
                         <div class="price-badge">سعر الجرام <span>800,000</span></div>
                         <div class="price-badge">سعر الحبة <span>80,000</span></div>
                     </div>
                 </div>
 
-                <form id="goldForm" action="https://formsubmit.co/YOUR_EMAIL_HERE" method="POST" enctype="multipart/form-data">
-                    
+                <form id="registerForm" action="https://formsubmit.co/mohammedata009@gmail.com" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_subject" value="طلب جديد - حبوب الذهب">
+                    <input type="hidden" name="_subject" value="طلب توثيق جديد - حبوب الذهب">
 
                     <div class="form-group">
-                        <label for="fullName">الاسم بالكامل:</label>
-                        <input type="text" id="fullName" name="الاسم" placeholder="أدخل اسمك الثلاثي" required>
+                        <label>الاسم بالكامل:</label>
+                        <input type="text" id="regName" name="الاسم" placeholder="أدخل اسمك الثلاثي" required autocomplete="off">
                     </div>
 
                     <div class="form-group">
-                        <label for="phone">رقم العملية / الهاتف:</label>
-                        <input type="tel" id="phone" name="رقم_العملية" placeholder="أدخل رقم الهاتف أو رقم العملية" required>
+                        <label>رقم الهاتف / العملية (اسم المستخدم):</label>
+                        <input type="tel" id="regPhone" name="رقم_الهاتف" placeholder="أدخل رقم الهاتف" required autocomplete="off">
                     </div>
 
                     <div class="form-group">
-                        <label for="quantity">الكمية المطلوبة (بالجرام):</label>
-                        <input type="number" id="quantity" name="الكمية_بالجرام" min="0.1" step="0.1" placeholder="مثال: 1.5" required oninput="calculateTotal()">
+                        <label>إنشاء كلمة سر للحساب:</label>
+                        <input type="password" id="regPass" name="كلمة_السر" placeholder="أدخل كلمة سر خاصة بك" required autocomplete="off">
                     </div>
 
                     <div class="form-group">
-                        <label>المبلغ الإجمالي المتوقع:</label>
-                        <input type="text" id="totalAmount" readonly value="0" style="background-color: #111; color: var(--gold-main); font-weight: bold; border-color: var(--gold-darker);">
+                        <label>الكمية المطلوبة (بالجرام):</label>
+                        <input type="number" id="quantity" name="الكمية_بالجرام" min="0.1" step="0.1" placeholder="مثال: 1" required oninput="calculateTotal()">
                     </div>
 
                     <div class="form-group">
-                        <label>صورة الجواز:</label>
+                        <label>المبلغ الإجمالي:</label>
+                        <input type="text" id="totalAmount" readonly value="0" style="background-color: #111; color: var(--gold-main); font-weight: bold;">
+                    </div>
+
+                    <div class="form-group">
+                        <label>صورة الجواز للتوثيق:</label>
                         <div class="file-input-wrapper">
-                            <span id="fileNameDisplay">📷 اضغط هنا لرفع صورة الجواز</span>
-                            <input type="file" id="passport" name="صورة_الجواز" accept="image/*,.pdf" required onchange="updateFileName(this)">
+                            <span id="fileNameDisplay">📷 اضغط لرفع صورة الجواز</span>
+                            <input type="file" name="صورة_الجواز" accept="image/*,.pdf" required onchange="updateFileName(this)">
                         </div>
                     </div>
 
-                    <button type="submit" class="btn-submit">إرسال الطلب وإكمال التحويل</button>
+                    <button type="submit" class="btn-submit">إرسال التوثيق وإنشاء الحساب</button>
                 </form>
+
+                <div class="nav-links">
+                    لديك حساب بالفعل؟ <a href="#" onclick="showLogin()">تسجيل الدخول هنا</a>
+                </div>
             </div>
 
-            <!-- ================= 2. صفحة الترحيب الفاخرة ================= -->
-            <div id="step-welcome" class="welcome-card">
-                <div class="gold-icon">✨</div>
-                <h2>مرحباً بك، <span id="userNameDisplay"></span></h2>
-                <p style="color: #ccc; font-size: 15px;">تم تسجيل بيانات طلبك بنجاح. يرجى إكمال عملية التحويل لتأكيد الشراء:</p>
+            <!-- 2. صفحة تسجيل الدخول -->
+            <div id="step-login" style="display: none;">
+                <div class="header">
+                    <div class="gold-icon">🔑</div>
+                    <h1>تسجيل الدخول</h1>
+                    <p>أدخل لرؤية حسابتك وتفاصيل التحويل</p>
+                </div>
+
+                <form id="loginForm" onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label>رقم الهاتف / رقم العملية:</label>
+                        <input type="tel" id="loginPhone" placeholder="أدخل رقم الهاتف" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>كلمة السر:</label>
+                        <input type="password" id="loginPass" placeholder="أدخل كلمة السر" required>
+                    </div>
+
+                    <button type="submit" class="btn-submit">دخول إلى صفحتي</button>
+                </form>
+
+                <div class="nav-links">
+                    ليس لديك حساب؟ <a href="#" onclick="showRegister()">إنشاء حساب وتوثيق جديد</a>
+                </div>
+            </div>
+
+            <!-- 3. الصفحة الشخصية للمستخدم -->
+            <div id="step-dashboard" class="dashboard-card">
+                <div class="header">
+                    <div class="gold-icon">✨</div>
+                    <h1>أهلاً بك، <span id="userDashboardName"></span></h1>
+                    <p>مرحباً بك في صفحتك الشخصية بـ <strong>حبوب الذهب</strong></p>
+                </div>
+
+                <div class="user-status">
+                    ⏳ حالة الحساب: بانتظار إكمال التحويل المالي
+                </div>
 
                 <div class="bank-details">
                     <p><strong>اسم الحساب:</strong> محمد طه عطا المنان</p>
-                    <p><strong>الخدمة المطلوبة:</strong> حبوب الذهب</p>
-                    <p style="margin-bottom: 5px;"><strong>رقم الحساب للتحويل:</strong></p>
-                    <div class="account-number-box">
-                        <span class="account-number">2473368</span>
+                    <p><strong>الخدمة:</strong> شراء حبوب الذهب</p>
+                    <p style="margin-bottom: 5px;"><strong>رقم الحساب المعتمد للتحويل:</strong></p>
+                    <div class="account-box">
+                        <span class="account-number" id="accNum">2473368</span>
+                        <button type="button" class="btn-copy" onclick="copyAccount()">نسخ الرقم</button>
                     </div>
                 </div>
 
-                <div class="alert-info">
-                    ⚠️ يرجى الاحتفاظ بإشعار التحويل المالي، وسيتم التواصل معكم فور تأكيد المعاملة.
-                </div>
+                <p style="font-size: 13px; color: #aaa; text-align: center; line-height: 1.6;">
+                    ⚠️ عند إكمال التحويل المالي، سيتم تحديث رصيدك من الذهب تلقائياً في هذه الصفحة بعد مراجعة الإشعار.
+                </p>
+
+                <button class="btn-submit" style="background: #333; color: #fff; margin-top: 20px;" onclick="showLogin()">تسجيل الخروج</button>
             </div>
 
         </div>
     </div>
 
+    <!-- حماية الكود وتشفيره -->
     <script>
+        // حظر مفاتيح الأدوات والتطوير F12 و Ctrl+U
+        document.onkeydown = function(e) {
+            if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && e.keyCode == 73) || (e.ctrlKey && e.keyCode == 85)) {
+                return false;
+            }
+        };
+
+        // دالة تشفير النصوص باستخدام SHA-256
+        async function hashText(text) {
+            const encoder = new TextEncoder();
+            const data = encoder.encode(text);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+
         function calculateTotal() {
             const qty = parseFloat(document.getElementById('quantity').value) || 0;
-            const gramPrice = 800000;
-            const total = qty * gramPrice;
-            document.getElementById('totalAmount').value = total.toLocaleString('ar-EG') + " جنيه";
+            document.getElementById('totalAmount').value = (qty * 800000).toLocaleString('ar-EG') + " جنيه";
         }
 
         function updateFileName(input) {
-            const display = document.getElementById('fileNameDisplay');
             if (input.files && input.files[0]) {
-                display.innerText = "✅ تم اختيار: " + input.files[0].name;
-            } else {
-                display.innerText = "📷 اضغط هنا لرفع صورة الجواز";
+                document.getElementById('fileNameDisplay').innerText = "✅ " + input.files[0].name;
             }
         }
 
-        document.getElementById('goldForm').addEventListener('submit', function(e) {
-            const nameInput = document.getElementById('fullName').value;
-            document.getElementById('userNameDisplay').innerText = nameInput;
+        function copyAccount() {
+            const acc = document.getElementById('accNum').innerText;
+            navigator.clipboard.writeText(acc);
+            alert("تم نسخ رقم الحساب: " + acc);
+        }
 
-            document.getElementById('step-form').style.display = 'none';
-            document.getElementById('step-welcome').style.display = 'block';
+        function showLogin() {
+            document.getElementById('step-register').style.display = 'none';
+            document.getElementById('step-dashboard').style.display = 'none';
+            document.getElementById('step-login').style.display = 'block';
+        }
+
+        function showRegister() {
+            document.getElementById('step-login').style.display = 'none';
+            document.getElementById('step-dashboard').style.display = 'none';
+            document.getElementById('step-register').style.display = 'block';
+        }
+
+        // حفظ الحساب بشكل مشفر تماماً
+        document.getElementById('registerForm').addEventListener('submit', async function(e) {
+            const name = document.getElementById('regName').value;
+            const phone = document.getElementById('regPhone').value;
+            const pass = document.getElementById('regPass').value;
+
+            // تشفير رقم الهاتف وكلمة السر قبل التخزين
+            const hashedPhone = await hashText(phone);
+            const hashedPass = await hashText(pass);
+
+            localStorage.setItem('_uP', hashedPhone);
+            localStorage.setItem('_uS', hashedPass);
+            localStorage.setItem('_uN', name);
+
+            document.getElementById('userDashboardName').innerText = name;
+            document.getElementById('step-register').style.display = 'none';
+            document.getElementById('step-dashboard').style.display = 'block';
         });
+
+        // التحقق من الدخول باستخدام التشفير
+        async function handleLogin(e) {
+            e.preventDefault();
+            const phone = document.getElementById('loginPhone').value;
+            const pass = document.getElementById('loginPass').value;
+
+            const hashedPhoneInput = await hashText(phone);
+            const hashedPassInput = await hashText(pass);
+
+            const storedPhone = localStorage.getItem('_uP');
+            const storedPass = localStorage.getItem('_uS');
+            const storedName = localStorage.getItem('_uN');
+
+            if (hashedPhoneInput === storedPhone && hashedPassInput === storedPass) {
+                document.getElementById('userDashboardName').innerText = storedName || "العميل";
+                document.getElementById('step-login').style.display = 'none';
+                document.getElementById('step-dashboard').style.display = 'block';
+            } else {
+                alert("بيانات الدخول غير صحيحة!");
+            }
+        }
     </script>
 </body>
 </html>
