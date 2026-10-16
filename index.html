@@ -23,7 +23,7 @@
             margin: 0;
             padding: 0;
             font-family: 'Cairo', sans-serif;
-            user-select: none; /* منع تحديد النصوص */
+            user-select: none;
         }
 
         body {
@@ -199,33 +199,34 @@
             padding: 10px;
             border-radius: 10px;
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             color: var(--gold-light);
             font-weight: bold;
+            font-size: 13px;
         }
 
         .bank-details {
             background: linear-gradient(145deg, #1c1c1c, #121212);
             border: 1px solid var(--gold-dark);
             border-radius: 16px;
-            padding: 20px;
-            margin: 20px 0;
+            padding: 18px;
+            margin: 15px 0;
             text-align: right;
         }
 
         .account-box {
             background: #000;
             border: 1px solid var(--gold-main);
-            padding: 12px;
+            padding: 10px;
             border-radius: 10px;
-            margin-top: 10px;
+            margin-top: 8px;
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
 
         .account-number {
-            font-size: 24px;
+            font-size: 22px;
             color: var(--gold-light);
             font-weight: 900;
             letter-spacing: 2px;
@@ -241,9 +242,51 @@
             font-size: 12px;
             cursor: pointer;
         }
+
+        .points-section {
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px dashed var(--gold-main);
+            border-radius: 14px;
+            padding: 15px;
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .points-section h3 {
+            color: var(--gold-main);
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .points-counter {
+            font-size: 18px;
+            font-weight: 900;
+            color: var(--gold-light);
+            margin-bottom: 10px;
+        }
+
+        .share-buttons {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .btn-share {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 13px;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        .btn-whatsapp { background-color: #25d366; }
+        .btn-facebook { background-color: #1877f2; }
     </style>
 </head>
-<body oncontextmenu="return false;"> <!-- حظر زر الفأرة الأيمن -->
+<body oncontextmenu="return false;">
 
     <div class="container-wrapper">
         <div class="container">
@@ -253,7 +296,7 @@
                 <div class="header">
                     <div class="gold-icon">👑</div>
                     <h1>حبوب الذهب</h1>
-                    <p>طلب شراء وتوثيق حساب جديد</p>
+                    <p>طلب شراء وتوثيق حساب جديد (السحب بعد 3 أشهر)</p>
                     <div class="price-badge-container">
                         <div class="price-badge">سعر الجرام <span>800,000</span></div>
                         <div class="price-badge">سعر الحبة <span>80,000</span></div>
@@ -310,7 +353,7 @@
                 <div class="header">
                     <div class="gold-icon">🔑</div>
                     <h1>تسجيل الدخول</h1>
-                    <p>أدخل لرؤية حسابتك وتفاصيل التحويل</p>
+                    <p>أدخل لرؤية حسابك وتفاصيل التحويل</p>
                 </div>
 
                 <form id="loginForm" onsubmit="handleLogin(event)">
@@ -332,7 +375,7 @@
                 </div>
             </div>
 
-            <!-- 3. الصفحة الشخصية للمستخدم -->
+            <!-- 3. الصفحة الشخصية للمستخدم (Dashboard) مع نظام مشاركة رابط الصفحة والسحب بعد 3 أشهر -->
             <div id="step-dashboard" class="dashboard-card">
                 <div class="header">
                     <div class="gold-icon">✨</div>
@@ -341,7 +384,7 @@
                 </div>
 
                 <div class="user-status">
-                    ⏳ حالة الحساب: بانتظار إكمال التحويل المالي
+                    ⏳ حالة الحساب: بانتظار التحويل المالي | 🗓️ موعد السحب الكبير: بعد 3 أشهر
                 </div>
 
                 <div class="bank-details">
@@ -354,26 +397,30 @@
                     </div>
                 </div>
 
-                <p style="font-size: 13px; color: #aaa; text-align: center; line-height: 1.6;">
-                    ⚠️ عند إكمال التحويل المالي، سيتم تحديث رصيدك من الذهب تلقائياً في هذه الصفحة بعد مراجعة الإشعار.
-                </p>
+                <!-- قسم مشاركة رابط الصفحة وكسب النقاط -->
+                <div class="points-section">
+                    <h3>🎁 اربح نقاطاً وفرصاً إضافية للسحب!</h3>
+                    <p style="font-size: 12px; color: #ccc; margin-bottom: 8px;">شارك رابط الصفحة في مجموعات الواتساب وفيسبوك لدعوة الناس للاشتراك (السحب بعد 3 أشهر):</p>
+                    <div class="points-counter">رصيدك الحالي: <span id="userPoints">10</span> نقطة</div>
+                    <div class="share-buttons">
+                        <button class="btn-share btn-whatsapp" onclick="shareToWhatsApp()">مشاركة واتساب 🟢</button>
+                        <button class="btn-share btn-facebook" onclick="shareToFacebook()">مشاركة فيسبوك 🔵</button>
+                    </div>
+                </div>
 
-                <button class="btn-submit" style="background: #333; color: #fff; margin-top: 20px;" onclick="showLogin()">تسجيل الخروج</button>
+                <button class="btn-submit" style="background: #333; color: #fff; margin-top: 15px;" onclick="showLogin()">تسجيل الخروج</button>
             </div>
 
         </div>
     </div>
 
-    <!-- حماية الكود وتشفيره -->
     <script>
-        // حظر مفاتيح الأدوات والتطوير F12 و Ctrl+U
         document.onkeydown = function(e) {
             if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && e.keyCode == 73) || (e.ctrlKey && e.keyCode == 85)) {
                 return false;
             }
         };
 
-        // دالة تشفير النصوص باستخدام SHA-256
         async function hashText(text) {
             const encoder = new TextEncoder();
             const data = encoder.encode(text);
@@ -411,26 +458,47 @@
             document.getElementById('step-register').style.display = 'block';
         }
 
-        // حفظ الحساب بشكل مشفر تماماً
+        function addPoints() {
+            let currentPoints = parseInt(localStorage.getItem('_uPts') || '10');
+            currentPoints += 5;
+            localStorage.setItem('_uPts', currentPoints);
+            document.getElementById('userPoints').innerText = currentPoints;
+            alert("شكراً لمشاركتك! تمت إضافة 5 نقاط جديدة لرصيدك.");
+        }
+
+        // مشاركة رابط الصفحة الفعلي مع رسالة دعوة والسحب بعد 3 أشهر
+        function shareToWhatsApp() {
+            const pageUrl = window.location.href;
+            const text = encodeURIComponent("✨ فرصة ذهبية! ندعوكم للاشتراك في منصة حبوب الذهب الفاخرة، اشترِ بالجرام أو بالحبة. 🏆 ملاحظة هامة: السحب الكبير سيتم بعد 3 أشهر من الآن!\n\nرابط الصفحة للانضمام:");
+            window.open(`https://api.whatsapp.com/send?text=${text} ${pageUrl}`, '_blank');
+            addPoints();
+        }
+
+        function shareToFacebook() {
+            const pageUrl = encodeURIComponent(window.location.href);
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`, '_blank');
+            addPoints();
+        }
+
         document.getElementById('registerForm').addEventListener('submit', async function(e) {
             const name = document.getElementById('regName').value;
             const phone = document.getElementById('regPhone').value;
             const pass = document.getElementById('regPass').value;
 
-            // تشفير رقم الهاتف وكلمة السر قبل التخزين
             const hashedPhone = await hashText(phone);
             const hashedPass = await hashText(pass);
 
             localStorage.setItem('_uP', hashedPhone);
             localStorage.setItem('_uS', hashedPass);
             localStorage.setItem('_uN', name);
+            localStorage.setItem('_uPts', '10');
 
             document.getElementById('userDashboardName').innerText = name;
+            document.getElementById('userPoints').innerText = '10';
             document.getElementById('step-register').style.display = 'none';
             document.getElementById('step-dashboard').style.display = 'block';
         });
 
-        // التحقق من الدخول باستخدام التشفير
         async function handleLogin(e) {
             e.preventDefault();
             const phone = document.getElementById('loginPhone').value;
@@ -442,9 +510,11 @@
             const storedPhone = localStorage.getItem('_uP');
             const storedPass = localStorage.getItem('_uS');
             const storedName = localStorage.getItem('_uN');
+            const storedPts = localStorage.getItem('_uPts') || '10';
 
             if (hashedPhoneInput === storedPhone && hashedPassInput === storedPass) {
                 document.getElementById('userDashboardName').innerText = storedName || "العميل";
+                document.getElementById('userPoints').innerText = storedPts;
                 document.getElementById('step-login').style.display = 'none';
                 document.getElementById('step-dashboard').style.display = 'block';
             } else {
